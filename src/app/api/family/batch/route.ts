@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { supabase } from "@/lib/supabase";
+import { requireSupabaseConfig } from "@/lib/api/require-supabase";
 import { FamilyNode, FamilyTreeData } from "@/types/family";
 import {
   validateParentRefsExist,
@@ -98,6 +99,8 @@ export async function PUT(request: Request) {
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const body = await request.json();
     const { nodes: updatedNodes } = body as {

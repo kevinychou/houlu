@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { supabase } from "@/lib/supabase";
+import { requireSupabaseConfig } from "@/lib/api/require-supabase";
 import { AvatarCrop, FamilyNode, FamilyTreeData } from "@/types/family";
 
 // Helper to verify authentication
@@ -45,6 +46,8 @@ export async function POST(
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { id: imageId } = await params;
     const body = await request.json();
@@ -154,6 +157,8 @@ export async function DELETE(
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { searchParams } = new URL(request.url);
     const nodeId = searchParams.get("node_id");

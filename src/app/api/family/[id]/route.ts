@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { supabase } from "@/lib/supabase";
+import { requireSupabaseConfig } from "@/lib/api/require-supabase";
 import { FamilyNode, FamilyTreeData } from "@/types/family";
 import {
   validateParentRefsExist,
@@ -101,6 +102,8 @@ export async function PUT(
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { id } = await params;
     const body = await request.json();
@@ -194,6 +197,8 @@ export async function DELETE(
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { id } = await params;
 
@@ -276,6 +281,8 @@ export async function GET(
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { id } = await params;
     const nodes = await getFamilyData();

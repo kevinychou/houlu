@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { supabase, generateImagePath, uploadImage } from "@/lib/supabase";
+import { requireSupabaseConfig } from "@/lib/api/require-supabase";
 import { SourceDocument } from "@/types/source";
 
 async function verifyAuth(): Promise<boolean> {
@@ -15,6 +16,8 @@ export async function GET(request: NextRequest) {
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const { searchParams } = new URL(request.url);
     const sortBy = searchParams.get("sort") || "uploaded_at";
@@ -73,6 +76,8 @@ export async function POST(request: NextRequest) {
     if (!(await verifyAuth())) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const configError = requireSupabaseConfig();
+    if (configError) return configError;
 
     const formData = await request.formData();
     const file = formData.get("file") as File | null;

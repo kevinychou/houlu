@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { supabase } from "@/lib/supabase";
+import { requireSupabaseConfig } from "@/lib/api/require-supabase";
 
 // Helper to verify authentication
 async function verifyAuth(): Promise<boolean> {
@@ -15,6 +16,8 @@ export async function GET() {
   if (!isAuthenticated) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  const configError = requireSupabaseConfig();
+  if (configError) return configError;
 
   try {
     // Fetch all tagged_node_ids arrays from images

@@ -71,7 +71,10 @@ export default async function SourcePage() {
           </div>
         </section>
       )}
-      <SourceClient initialDocuments={documents} />
+      <SourceClient
+        initialDocuments={documents}
+        backendConfigured={backendConfigured}
+      />
     </main>
   );
 }

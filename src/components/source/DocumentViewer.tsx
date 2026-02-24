@@ -30,6 +30,7 @@ interface DocumentViewerProps {
   onClose: () => void;
   onUpdate: (doc: SourceDocument) => void;
   onDelete: (id: string) => void;
+  readOnly?: boolean;
 }
 
 export default function DocumentViewer({
@@ -37,6 +38,7 @@ export default function DocumentViewer({
   onClose,
   onUpdate,
   onDelete,
+  readOnly = false,
 }: DocumentViewerProps) {
   const { t } = useI18n();
   const imageRef = useRef<HTMLImageElement>(null);
@@ -177,6 +179,7 @@ export default function DocumentViewer({
 
   // Save edits
   const handleSave = async () => {
+    if (readOnly) return;
     if (!editTitle.trim()) return;
 
     setSaving(true);
@@ -219,6 +222,7 @@ export default function DocumentViewer({
 
   // Delete document
   const handleDelete = async () => {
+    if (readOnly) return;
     setDeleting(true);
     try {
       const response = await fetch(`/api/sources/${document.id}`, {
@@ -422,13 +426,21 @@ export default function DocumentViewer({
                     <span className="text-xs uppercase tracking-wider text-gray-500">
                       Document Info
                     </span>
-                    <button
-                      onClick={() => setIsEditing(true)}
-                      className="text-xs text-amber-600 hover:text-amber-700"
-                    >
-                      {t("edit")}
-                    </button>
+                    {!readOnly && (
+                      <button
+                        onClick={() => setIsEditing(true)}
+                        className="text-xs text-amber-600 hover:text-amber-700"
+                      >
+                        {t("edit")}
+                      </button>
+                    )}
                   </div>
+
+                  {readOnly && (
+                    <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1">
+                      Preview mode: connect Supabase to enable editing and delete actions.
+                    </p>
+                  )}
 
                   {document.document_date && (
                     <div>
@@ -497,7 +509,7 @@ export default function DocumentViewer({
             </div>
 
             {/* Footer with delete - pushed to bottom */}
-            {!isEditing && (
+            {!isEditing && !readOnly && (
               <div className="px-4 py-3 border-t border-gray-200 bg-gray-50 mt-auto">
                 {showDeleteConfirm ? (
                   <div className="flex gap-2">
