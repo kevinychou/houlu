@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const STORAGE_KEY = "qi-family-tree-favorites";
+const STORAGE_KEY = "hou-lu-family-tree-favorites";
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());

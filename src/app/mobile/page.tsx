@@ -10,7 +10,7 @@ import { FamilyTreeData } from "@/types/family";
 
 export const metadata: Metadata = {
   title: "戚氏家谱",
-  description: "Qi Family Tree",
+  description: "",
   manifest: "/manifest.json",
   icons: {
     icon: "/logo.png",

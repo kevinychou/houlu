@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Qi Family Tree",
-  description: "A collaborative family tree for the Qi family",
+  title: "Hou-Lu Family Tree",
+  description: "A collaborative family tree for the Hou-Lu family",
   icons: {
     icon: "/logo.png",
   },

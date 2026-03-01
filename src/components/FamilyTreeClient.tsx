@@ -316,7 +316,7 @@ function FamilyTreeContent({ initialNodes }: FamilyTreeClientProps) {
             <LanguageToggle />
             <img
               src="/logo.png"
-              alt="Qi Family"
+              alt="Hou-Lu Family"
               className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover cursor-pointer select-none"
               onClick={handleLogoClick}
             />

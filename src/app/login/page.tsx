@@ -75,7 +75,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="bg-white rounded-lg shadow-md p-8">
           <h1 className="text-2xl font-bold text-gray-900 text-center mb-6">
-            Qi Family Tree
+            Hou-Lu Family Tree
           </h1>
           <Suspense fallback={<div className="h-32" />}>
             <LoginForm />

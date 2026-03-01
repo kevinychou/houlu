@@ -32,7 +32,7 @@ function detectLanguage(): Language {
 const translations = {
   en: {
     // Header
-    familyName: "Qi (戚) Family",
+    familyName: "Hou-Lu (侯-陆) Family",
     familyGenealogy: "Family Genealogy",
     addPerson: "Add Person",
     loading: "Loading...",
@@ -193,7 +193,7 @@ const translations = {
     sourceNotes: "Research Notes",
     sourceNotesPlaceholder: "Add research notes, transcription, context...",
     sourceLocation: "Archive Location",
-    sourceLocationPlaceholder: "e.g., Box 3, Qi family archives",
+    sourceLocationPlaceholder: "e.g., Box 3, Hou-Lu family archives",
     noDocuments: "No documents yet",
     noDocumentsDesc: "Upload historical source documents to begin your research archive.",
     viewDocument: "View Document",
@@ -266,7 +266,7 @@ const translations = {
     cycleAppearances: "Cycle through appearances",
 
     // Mobile-specific
-    qiFamilyTree: "Qi Family Tree",
+    qiFamilyTree: "Hou-Lu Family Tree",
     searchResults: "Search Results",
     familyMembers: "Family Members",
     noConnectedFamily: "No connected family members",
@@ -319,7 +319,7 @@ const translations = {
   },
   zh: {
     // Header
-    familyName: "戚氏家族",
+    familyName: "侯-陆家族",
     familyGenealogy: "家谱",
     addPerson: "添加成员",
     loading: "加载中...",
@@ -553,7 +553,7 @@ const translations = {
     cycleAppearances: "循环切换位置",
 
     // Mobile-specific
-    qiFamilyTree: "戚氏家谱",
+    qiFamilyTree: "侯-陆家谱",
     searchResults: "搜索结果",
     familyMembers: "家族成员",
     noConnectedFamily: "暂无关联家庭成员",
