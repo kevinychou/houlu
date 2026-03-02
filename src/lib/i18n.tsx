@@ -480,7 +480,7 @@ const translations = {
     sourceNotes: "研究笔记",
     sourceNotesPlaceholder: "添加研究笔记、转录内容、背景信息...",
     sourceLocation: "档案位置",
-    sourceLocationPlaceholder: "例如：第3箱，戚氏家族档案",
+    sourceLocationPlaceholder: "例如：第3箱，侯陆家族档案",
     noDocuments: "暂无文献",
     noDocumentsDesc: "上传历史原始文献，开始建立您的研究档案。",
     viewDocument: "查看文献",

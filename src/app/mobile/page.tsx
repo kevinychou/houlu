@@ -9,7 +9,7 @@ import { PREVIEW_FAMILY_DATA } from "@/lib/preview-data";
 import { FamilyTreeData } from "@/types/family";
 
 export const metadata: Metadata = {
-  title: "戚氏家谱",
+  title: "侯陆家谱",
   description: "",
   manifest: "/manifest.json",
   icons: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "戚氏家谱",
+    title: "侯陆家谱",
   },
   other: {
     "mobile-web-app-capable": "yes",
