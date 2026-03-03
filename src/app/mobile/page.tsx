@@ -8,6 +8,9 @@ import {
 import { PREVIEW_FAMILY_DATA } from "@/lib/preview-data";
 import { FamilyTreeData } from "@/types/family";
 
+// Disable caching to always fetch fresh data (including avatars)
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "侯陆家谱",
   description: "",
